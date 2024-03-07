@@ -1,0 +1,14 @@
+﻿@model Patient
+@{
+    ViewBag.Title = "Delete Movie";
+}
+<h2>Confirm Deletion</h2>
+<h3>@Model.Stylostic/@Model.Diastolic (taken on @Model.Date)</h3>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="PatientId" />
+    <button type="submit" class="btn btn-primary">
+        Delete
+    </button>
+    <a asp-controller="Patient" asp-action="Index"
+       class="btn btn-primary">Cancel</a>
+</form>

@@ -1,0 +1,44 @@
+﻿@model Patient
+
+@{
+    string title = ViewBag.Action + " Patient";
+    ViewBag.Title = title;
+}
+<h2>@ViewBag.Title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All"
+         class="text-danger">
+    </div>
+    <div class="form-group">
+        <label asp-for="Stylostic">Stylostic (mm Hg)</label>
+        <input asp-for="Stylostic" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Diastolic">Diastolic (mm Hg)</label>
+        <input asp-for="Diastolic" class="form-control">
+    </div>
+    
+    
+    <div class="form-group">
+        <label asp-for="PositionId">Position</label>
+        <select asp-for="PositionId" class="form-control">
+            <option value="">select a position</option>
+            @foreach (Position g in ViewBag.Positions)
+            {
+                <option value="@g.PositionId">
+                    @g.Name
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date">Date Taken</label>
+        <input type="date" asp-for="Date" class="form-control">
+    </div>
+    <input type="hidden" asp-for="PatientId" />
+    <button type="submit" class="btn btn-primary">
+        @ViewBag.Action
+    </button>
+    <a asp-controller="Patient" asp-action="Index"
+       class="btn btn-primary">Cancel</a>
+</form>
